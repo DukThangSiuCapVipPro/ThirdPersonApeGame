@@ -207,7 +207,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2523877198247751756
 Transform:
   m_ObjectHideFlags: 0
@@ -842,7 +842,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5380377010480577110
 Transform:
   m_ObjectHideFlags: 0
@@ -1421,10 +1421,10 @@ GameObject:
   - component: {fileID: 236769685989349193}
   - component: {fileID: 3633138826918214041}
   - component: {fileID: 4919790648827666393}
-  - component: {fileID: 479815705665223658}
+  - component: {fileID: 3324331288877100114}
   m_Layer: 9
   m_Name: Enemy
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1440,7 +1440,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 292258704096571326}
   - {fileID: 5380377010480577110}
@@ -1484,6 +1484,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PathReachingRadius: 2
   OrientationSpeed: 20
+  dropItems:
+  - {fileID: 1706013714465678150, guid: 963ab687bb2165b49b222dc9cf58b2bb, type: 3}
+  - {fileID: 6198528137097738326, guid: b8fca1f1fe6bb564cbf07a25cc196d88, type: 3}
+  - {fileID: 1302189998204798291, guid: 8c97dd51dff30f94d8beef6451dc995a, type: 3}
+  - {fileID: 1712725967901292073, guid: 25d929c8612948e4e8f41eaa38d62567, type: 3}
+  - {fileID: 7776397118070399630, guid: 61db5f9cf3c36aa40a499b9a9e3af693, type: 3}
+  - {fileID: 8899380956637482944, guid: 300676063e32e13428047167b0bd084d, type: 3}
+  - {fileID: 3236340666805320006, guid: 11faa24dbd6cf5249a6a93aab0426f8b, type: 3}
+  - {fileID: 7027539078067989654, guid: 596fc9ebe232a1348b335086de99df13, type: 3}
+  - {fileID: 4619437334284854607, guid: b87724c322093f7439184e7b78838cde, type: 3}
+  - {fileID: 551545991741713754, guid: ede5e2e1bf97fa34a865bcaec34b4bd3, type: 3}
 --- !u!114 &236769685989349193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1534,8 +1545,8 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!143 &479815705665223658
-CharacterController:
+--- !u!136 &3324331288877100114
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1552,13 +1563,10 @@ CharacterController:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 1.8
+  serializedVersion: 2
   m_Radius: 0.28
-  m_SlopeLimit: 45
-  m_StepOffset: 0.25
-  m_SkinWidth: 0.02
-  m_MinMoveDistance: 0
+  m_Height: 1.8
+  m_Direction: 1
   m_Center: {x: 0, y: 0.93, z: 0}
 --- !u!1 &5149613351220423243
 GameObject:

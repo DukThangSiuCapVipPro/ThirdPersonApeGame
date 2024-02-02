@@ -11,17 +11,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: fc37b610e37eead4a88a7cdda29da7fe,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.34
+      value: -5.255095
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fc37b610e37eead4a88a7cdda29da7fe,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.66
+      value: 0.11909318
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fc37b610e37eead4a88a7cdda29da7fe,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.93
+      value: 1.1957713
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fc37b610e37eead4a88a7cdda29da7fe,
         type: 3}
@@ -85,6 +85,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3431589044797374540}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fc37b610e37eead4a88a7cdda29da7fe,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5741691163158770391}
   m_SourcePrefab: {fileID: 100100000, guid: fc37b610e37eead4a88a7cdda29da7fe, type: 3}
 --- !u!1 &1706013714465678150 stripped
 GameObject:
@@ -105,10 +109,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterLayer: 8
-  jumpPower: 2
-  jumpNum: 1
-  jumpTime: 0.5
-  speed: 5
+  type: 0
+  rigid: {fileID: 5741691163158770391}
+  col: {fileID: 3431589044797374540}
+  characterTrans: {fileID: 0}
+  isMoving: 0
 --- !u!136 &3431589044797374540
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -124,7 +129,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -132,3 +137,30 @@ CapsuleCollider:
   m_Height: 0.56168664
   m_Direction: 1
   m_Center: {x: 0, y: 0.000000014901161, z: -0.000000014901161}
+--- !u!54 &5741691163158770391
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706013714465678150}
+  serializedVersion: 4
+  m_Mass: 10
+  m_Drag: 0.5
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

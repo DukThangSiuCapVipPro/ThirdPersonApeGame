@@ -10,6 +10,8 @@ public class EnemyController : MonoBehaviour
     [Tooltip("The speed at which the enemy rotates")]
     public float OrientationSpeed = 10f;
 
+    public List<GameObject> dropItems;
+
     public PatrolPath PatrolPath { get; set; }
     public NavMeshAgent NavMeshAgent { get; private set; }
 
@@ -120,6 +122,15 @@ public class EnemyController : MonoBehaviour
                     m_PathDestinationNodeIndex -= PatrolPath.PathNodes.Count;
                 }
             }
+        }
+    }
+
+    public void SpawnDropItems()
+    {
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+        foreach (GameObject obj in dropItems)
+        {
+            SimplePool.Spawn(obj, pos, Quaternion.identity);
         }
     }
 }

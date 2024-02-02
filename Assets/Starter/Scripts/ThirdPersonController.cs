@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using StarterAssets;
+using System.Linq;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
+using DG.Tweening;
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
  */
@@ -12,6 +14,7 @@ using UnityEngine.InputSystem;
 #endif
 public class ThirdPersonController : MonoBehaviour
 {
+    #region Inspectors
     [Header("Player")]
     [Tooltip("Move speed of the character in m/s")]
     public float MoveSpeed = 2.0f;
@@ -76,6 +79,10 @@ public class ThirdPersonController : MonoBehaviour
     public Transform handTrans;
     public LayerMask enemyLayer;
 
+    public Transform enemyDetecterTrans;
+    #endregion
+
+    #region Variables
     // cinemachine
     private float _cinemachineTargetYaw;
     private float _cinemachineTargetPitch;
@@ -88,6 +95,9 @@ public class ThirdPersonController : MonoBehaviour
     private float _verticalVelocity;
     private float _terminalVelocity = 53.0f;
     private float _punchCooldown = 0;
+    private bool _isFacingEnemy = false;
+
+    private float exp = 0;
 
     // timeout deltatime
     private float _jumpTimeoutDelta;
@@ -124,8 +134,9 @@ public class ThirdPersonController : MonoBehaviour
 #endif
         }
     }
+    #endregion
 
-
+    #region Unity Methods
     private void Awake()
     {
         // get a reference to our main camera
@@ -169,7 +180,22 @@ public class ThirdPersonController : MonoBehaviour
     {
         CameraRotation();
     }
+    private void OnDrawGizmosSelected()
+    {
+        Color transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
+        Color transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);
 
+        if (Grounded) Gizmos.color = transparentGreen;
+        else Gizmos.color = transparentRed;
+
+        // when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
+        Gizmos.DrawSphere(
+            new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z),
+            GroundedRadius);
+    }
+    #endregion
+
+    #region Movement Methods
     private void AssignAnimationIDs()
     {
         _animIDSpeed = Animator.StringToHash("Speed");
@@ -287,7 +313,10 @@ public class ThirdPersonController : MonoBehaviour
 
     private void Punch()
     {
-        if (Grounded && _input.punch && Time.realtimeSinceStartup - _punchCooldown > 2)
+        RaycastHit[] hits = Physics.RaycastAll(enemyDetecterTrans.position, transform.TransformDirection(Vector3.forward), 2);
+        Debug.DrawRay(enemyDetecterTrans.position, transform.TransformDirection(Vector3.forward) * 2, Color.yellow);
+        _isFacingEnemy = hits.ToList().FindAll(x => x.collider.gameObject.layer == 9).Count > 0;
+        if (Grounded && (_input.punch || _isFacingEnemy) && Time.realtimeSinceStartup - _punchCooldown > 2)
         {
             _punchCooldown = Time.realtimeSinceStartup;
             _animator.SetTrigger(_animIDPunch);
@@ -370,21 +399,18 @@ public class ThirdPersonController : MonoBehaviour
         if (lfAngle > 360f) lfAngle -= 360f;
         return Mathf.Clamp(lfAngle, lfMin, lfMax);
     }
+    #endregion
 
-    private void OnDrawGizmosSelected()
+    #region Public Methods
+    public void ClaimItem(ItemType itmType)
     {
-        Color transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
-        Color transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);
-
-        if (Grounded) Gizmos.color = transparentGreen;
-        else Gizmos.color = transparentRed;
-
-        // when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
-        Gizmos.DrawSphere(
-            new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z),
-            GroundedRadius);
+        exp += 1;
+        float x = transform.localScale.x + (0.5f * exp / 10f);
+        transform.localScale = new Vector3(x, x, x);
     }
+    #endregion
 
+    #region Private Methods
     private void OnFootstep(AnimationEvent animationEvent)
     {
         if (animationEvent.animatorClipInfo.weight > 0.5f)
@@ -413,4 +439,5 @@ public class ThirdPersonController : MonoBehaviour
             col.SendMessage("OnDamaged", 10);
         }
     }
+    #endregion
 }

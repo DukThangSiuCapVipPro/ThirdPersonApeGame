@@ -117,6 +117,7 @@ public class EnemyMobile : MonoBehaviour
 
     public void OnDamaged(int dmg)
     {
+        m_EnemyController.SpawnDropItems();
         gameObject.SetActive(false);
     }
 
