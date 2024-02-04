@@ -46,18 +46,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterConfigs:
   - size: {x: 1, y: 1, z: 1}
-    exp: 0
+    exp: 50
     camRootPos: {x: 0, y: 5, z: -0.5}
     camRootRotate: {x: 30, y: 0, z: 0}
   - size: {x: 2, y: 2, z: 2}
-    exp: 50
+    exp: 100
     camRootPos: {x: 0, y: 6, z: -1.5}
     camRootRotate: {x: 30, y: 0, z: 0}
   - size: {x: 4, y: 4, z: 4}
-    exp: 100
+    exp: 200
     camRootPos: {x: 0, y: 7, z: -2.5}
     camRootRotate: {x: 30, y: 0, z: 0}
   - size: {x: 6, y: 6, z: 6}
-    exp: 200
+    exp: 400
     camRootPos: {x: 0, y: 8, z: -3.5}
     camRootRotate: {x: 30, y: 0, z: 0}
