@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterLayer: 8
-  type: 0
+  type: 1
   rigid: {fileID: 5230038789703540596}
   col: {fileID: 7175426558072529490}
   characterTrans: {fileID: 0}
