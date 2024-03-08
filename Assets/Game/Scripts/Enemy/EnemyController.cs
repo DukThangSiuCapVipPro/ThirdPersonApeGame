@@ -127,7 +127,7 @@ public class EnemyController : MonoBehaviour
 
     public void SpawnDropItems()
     {
-        Vector3 pos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
         foreach (GameObject obj in dropItems)
         {
             SimplePool.Spawn(obj, pos, Quaternion.identity);

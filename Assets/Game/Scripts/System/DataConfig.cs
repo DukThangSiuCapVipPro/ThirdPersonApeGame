@@ -6,6 +6,18 @@ using System;
 public class DataConfig : Singleton<DataConfig>
 {
     public List<CharacterConfig> characterConfigs;
+
+    public CharacterConfig GetCharacterConfig(int exp)
+    {
+        for (int i = characterConfigs.Count - 1; i >= 0 ; i--)
+        {
+            if (exp >= characterConfigs[i].exp)
+            {
+                return characterConfigs[i];
+            }
+        }
+        return characterConfigs[0];
+    }
 }
 
 [Serializable]

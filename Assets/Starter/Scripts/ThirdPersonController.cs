@@ -23,7 +23,7 @@ public class ThirdPersonController : MonoBehaviour
     public float SprintSpeed = 5.335f;
 
     [Tooltip("How fast the character turns to face movement direction")]
-    [Range(0.0f, 0.3f)]
+    [Range(0.0f, 2f)]
     public float RotationSmoothTime = 0.12f;
 
     [Tooltip("Acceleration and deceleration")]
@@ -80,6 +80,7 @@ public class ThirdPersonController : MonoBehaviour
     public LayerMask enemyLayer;
 
     public Transform enemyDetecterTrans;
+    public Transform cameraRootTrans;
     #endregion
 
     #region Variables
@@ -97,7 +98,7 @@ public class ThirdPersonController : MonoBehaviour
     private float _punchCooldown = 0;
     private bool _isFacingEnemy = false;
 
-    private float exp = 0;
+    [SerializeField] private int exp = 0;
 
     // timeout deltatime
     private float _jumpTimeoutDelta;
@@ -404,9 +405,11 @@ public class ThirdPersonController : MonoBehaviour
     #region Public Methods
     public void ClaimItem(ItemType itmType)
     {
-        exp += 1;
-        float x = transform.localScale.x + (0.5f * exp / 10f);
-        transform.localScale = new Vector3(x, x, x);
+        exp += 10;
+        CharacterConfig config = DataConfig.Instance.GetCharacterConfig(exp);
+        cameraRootTrans.localPosition = new Vector3(config.camRootPos.x, config.camRootPos.y, config.camRootPos.z);
+        cameraRootTrans.localEulerAngles = new Vector3(config.camRootRotate.x, config.camRootRotate.y, config.camRootRotate.z);
+        transform.localScale = config.size;
     }
     #endregion
 
