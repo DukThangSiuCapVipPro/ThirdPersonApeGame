@@ -1495,6 +1495,7 @@ MonoBehaviour:
   - {fileID: 7027539078067989654, guid: 596fc9ebe232a1348b335086de99df13, type: 3}
   - {fileID: 4619437334284854607, guid: b87724c322093f7439184e7b78838cde, type: 3}
   - {fileID: 551545991741713754, guid: ede5e2e1bf97fa34a865bcaec34b4bd3, type: 3}
+  DetectionModule: {fileID: 4132355972625154980}
 --- !u!114 &236769685989349193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1521,7 +1522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e159ae645afb03b4691d831fc57a8ff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Affiliation: 0
+  Affiliation: 9
   AimPoint: {fileID: 2440847478599144187}
 --- !u!195 &4919790648827666393
 NavMeshAgent:
@@ -2059,8 +2060,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DetectionSourcePoint: {fileID: 3158274044604794123}
-  DetectionRange: 100
-  AttackRange: 10
+  DetectionRange: 200
+  AttackRange: 0
   KnownTargetTimeout: 4
   Animator: {fileID: 8944227923251382988}
   MoveSpeed: 1
@@ -2704,7 +2705,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 91e9f6e774ec35742b66a67570d73729,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4429663061171469605}
   m_SourcePrefab: {fileID: 100100000, guid: 91e9f6e774ec35742b66a67570d73729, type: 3}
 --- !u!4 &7355466721725196464 stripped
 Transform:
@@ -2712,3 +2717,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7032766085306666843}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7879063695736926730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 91e9f6e774ec35742b66a67570d73729,
+    type: 3}
+  m_PrefabInstance: {fileID: 7032766085306666843}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &4429663061171469605
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7879063695736926730}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.67, y: 1, z: 2.45}
+  m_Center: {x: 0, y: 0.59, z: 0.45}

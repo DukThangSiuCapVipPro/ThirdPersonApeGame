@@ -9,8 +9,9 @@ public class ActorsManager : SingletonMonoBehaviour<ActorsManager>
 
     public void SetPlayer(GameObject player) => Player = player;
 
-    void Awake()
+    public override void Awake()
     {
+        base.Awake();
         Actors = new List<Actor>();
     }
 }

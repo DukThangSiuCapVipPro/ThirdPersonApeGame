@@ -463,13 +463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 7669175178249141584}
   usingDefaultTransparent: 1
-  prefabs:
-  - {fileID: 336544903578127202, guid: 5204957c51799534e95b191469fe294d, type: 3}
-  - {fileID: 2791735620504431256, guid: 02bbbe055826ce740958409b00742f13, type: 3}
-  - {fileID: 7632577308018622103, guid: d4d7bc7ce5c37004699968a38ed07502, type: 3}
-  - {fileID: 391077086820620532, guid: 94841a660b44a45408f08e72fa8fb8f6, type: 3}
-  - {fileID: 6678947639005858889, guid: 854572245b1f6d9448cbf9686e10652e, type: 3}
-  - {fileID: 5874172069934692013, guid: 176086d40e2b5e8468299c74ebcc17e8, type: 3}
+  prefabs: []
   transparent: {fileID: 8830307760153765193}
   parent: {fileID: 5361009059336727500}
   hasPopupShowing: 0
@@ -755,7 +749,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: -1921539769
@@ -869,7 +863,8 @@ MonoBehaviour:
   m_text: sgsfsdfdsdfs
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: -2250981747545640453, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -2250981747545640453, guid: 8f586378b4e144a9851e7b34d9b748ee,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

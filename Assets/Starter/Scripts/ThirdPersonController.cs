@@ -165,6 +165,8 @@ public class ThirdPersonController : MonoBehaviour
         // reset our timeouts on start
         _jumpTimeoutDelta = JumpTimeout;
         _fallTimeoutDelta = FallTimeout;
+
+        ActorsManager.Instance.SetPlayer(this.gameObject);
     }
 
     private void Update()
