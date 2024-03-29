@@ -51,6 +51,8 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.GameState != GameState.Playing)
+            return;
         DetectionModule.HandleTargetDetection(m_Actor, m_SelfColliders);
     }
 

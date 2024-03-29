@@ -98,12 +98,12 @@ public class EnemyMobile : MonoBehaviour
 
     void OnAttack()
     {
+        Debug.Log($"{gameObject.name} attack");
         //Animator.SetTrigger(k_AnimAttackParameter);
     }
 
     void OnDetectedTarget()
     {
-        Debug.Log($"{gameObject.name} Detect target");
         if (AiState == AIState.Patrol)
         {
             AiState = AIState.Follow;
@@ -113,7 +113,6 @@ public class EnemyMobile : MonoBehaviour
 
     void OnLostTarget()
     {
-        Debug.Log($"{gameObject.name} Lost target");
         if (AiState == AIState.Follow || AiState == AIState.Attack)
         {
             AiState = AIState.Patrol;
