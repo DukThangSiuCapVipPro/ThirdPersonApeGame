@@ -15,7 +15,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     void Start()
     {
-        playingTime = 5;
+        playingTime = 120;
         GameUIManager.Instance.UpdateTime(playingTime);
     }
 

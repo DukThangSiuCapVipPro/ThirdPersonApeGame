@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using StarterAssets;
 using System.Linq;
+using System;
+using Random = UnityEngine.Random;
+
+
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -452,9 +456,10 @@ public class ThirdPersonController : MonoBehaviour
         }
     }
 
-    private void OnPunch(AnimationEvent animationEvent)
+    private void OnPunchDone(AnimationEvent animationEvent)
     {
-        Collider[] cols = Physics.OverlapSphere(handTrans.position, 0.5f, enemyLayer);
+        
+        Collider[] cols = Physics.OverlapSphere(handTrans.position, 1f, enemyLayer);
         foreach (var col in cols)
         {
             col.SendMessage("OnDamaged", 10);

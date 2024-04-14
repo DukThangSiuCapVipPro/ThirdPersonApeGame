@@ -25,7 +25,6 @@ public class LoadingScene : MonoBehaviour
         {
             if (lastStep < step)
             {
-                Debug.Log(lastStep);
                 if (!isLoad)
                 {
                     isLoad = true;

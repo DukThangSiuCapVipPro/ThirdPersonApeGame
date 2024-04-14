@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,8 @@ public class EnemyMobile : MonoBehaviour
 
     EnemyController m_EnemyController;
     public Animator Animator;
+    public Transform handTrans;
+    public LayerMask enemyLayer;
 
     private void Start()
     {
@@ -70,8 +73,8 @@ public class EnemyMobile : MonoBehaviour
             case AIState.Patrol:
                 m_EnemyController.UpdatePathDestination();
                 m_EnemyController.SetNavDestination(m_EnemyController.GetDestinationOnPath());
-                Animator.SetFloat("Speed", 2);
-                Animator.SetFloat("MotionSpeed", 1);
+                //Animator.SetFloat("Speed", 2);
+                //Animator.SetFloat("MotionSpeed", 1);
                 transform.LookAt(m_EnemyController.NavMeshAgent.destination);
                 break;
             case AIState.Follow:
@@ -91,15 +94,19 @@ public class EnemyMobile : MonoBehaviour
                 }
 
                 m_EnemyController.OrientTowards(m_EnemyController.KnownDetectedTarget.transform.position);
-                m_EnemyController.TryAtack(m_EnemyController.KnownDetectedTarget.transform.position);
+                m_EnemyController.TryAtack();
+                OnAttack();
                 break;
         }
     }
 
+    bool attacking = false;
     void OnAttack()
     {
-        Debug.Log($"{gameObject.name} attack");
-        //Animator.SetTrigger(k_AnimAttackParameter);
+        if (attacking)
+            return;
+        attacking = true;
+        Animator.SetTrigger("attack");
     }
 
     void OnDetectedTarget()
@@ -120,11 +127,6 @@ public class EnemyMobile : MonoBehaviour
         //Animator.SetBool(k_AnimAlertedParameter, false);
     }
 
-    public void OnDamaged(int dmg)
-    {
-        m_EnemyController.SpawnDropItems();
-        gameObject.SetActive(false);
-    }
     void OnDamaged()
     {
         m_EnemyController.SpawnDropItems();
@@ -133,11 +135,15 @@ public class EnemyMobile : MonoBehaviour
 
     private void OnFootstep(AnimationEvent animationEvent)
     {
-        
-    }
 
-    private void OnLand(AnimationEvent animationEvent)
+    }
+    public void OnAttackDone(AnimationEvent animationEvent)
     {
-        
+        Collider[] cols = Physics.OverlapSphere(handTrans.position, 1f, enemyLayer);
+        foreach (var col in cols)
+        {
+            col.SendMessage("OnDamaged", 100);
+        }
+        attacking = false;
     }
 }

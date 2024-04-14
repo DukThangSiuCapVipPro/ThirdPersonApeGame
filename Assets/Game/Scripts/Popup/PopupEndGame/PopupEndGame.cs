@@ -72,12 +72,15 @@ public class PopupEndGame : SingletonPopup<PopupEndGame>
     public void OnBonus()
     {
         if (!isWheelDone)
-        return;
+            return;
         Datamanager.Instance.UpdateGold(bonusRewardAmount);
     }
     public void OnBack()
     {
-        Datamanager.Instance.UpdateGold(rewardAmount);
-        GlobalSettings.Instance.ChangeScene(Const.SCENE_GAME);
+        base.Hide(delegate
+        {
+            Datamanager.Instance.UpdateGold(rewardAmount);
+            GlobalSettings.Instance.ChangeScene(Const.SCENE_GAME);
+        });
     }
 }

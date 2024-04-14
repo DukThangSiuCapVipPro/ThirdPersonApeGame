@@ -44,8 +44,8 @@ public class EnemyController : MonoBehaviour
             NavMeshAgent.angularSpeed = DetectionModule.AngularSpeed;
             NavMeshAgent.acceleration = DetectionModule.Acceleration;
         }
-        DetectionModule.onDetectedTarget += OnDetectedTarget;
-        DetectionModule.onLostTarget += OnLostTarget;
+        DetectionModule.onDetectedTarget += OnEnemyDetectedTarget;
+        DetectionModule.onLostTarget += OnEnemyLostTarget;
         onAttack += DetectionModule.OnAttack;
     }
 
@@ -56,20 +56,17 @@ public class EnemyController : MonoBehaviour
         DetectionModule.HandleTargetDetection(m_Actor, m_SelfColliders);
     }
 
-    void OnLostTarget()
+    void OnEnemyLostTarget()
     {
         onLostTarget.Invoke();
     }
-    void OnDetectedTarget()
+    void OnEnemyDetectedTarget()
     {
         onDetectedTarget.Invoke();
     }
-    public bool TryAtack(Vector3 enemyPosition)
+    public void TryAtack()
     {
-        // Shoot the weapon
-        bool didFire = true;
-
-        return didFire;
+        
     }
     public void OrientTowards(Vector3 lookPosition)
     {
