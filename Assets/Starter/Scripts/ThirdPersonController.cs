@@ -165,10 +165,15 @@ public class ThirdPersonController : MonoBehaviour
         // reset our timeouts on start
         _jumpTimeoutDelta = JumpTimeout;
         _fallTimeoutDelta = FallTimeout;
+
+        ActorsManager.Instance.SetPlayer(this.gameObject);
     }
 
     private void Update()
     {
+        if (GameManager.Instance.GameState != GameState.Playing)
+            return;
+
         _hasAnimator = TryGetComponent(out _animator);
 
         JumpAndGravity();
@@ -410,6 +415,19 @@ public class ThirdPersonController : MonoBehaviour
         cameraRootTrans.localPosition = new Vector3(config.camRootPos.x, config.camRootPos.y, config.camRootPos.z);
         cameraRootTrans.localEulerAngles = new Vector3(config.camRootRotate.x, config.camRootRotate.y, config.camRootRotate.z);
         transform.localScale = config.size;
+    }
+    public void InitStarterBooster(bool sz, bool spd)
+    {
+        if (sz)
+        {
+            CharacterConfig config = DataConfig.Instance.characterConfigs[1];
+            exp += config.exp;
+            ClaimItem(ItemType.Exp);
+        }
+        if (spd)
+        {
+            SprintSpeed *= 1.25f;
+        }
     }
     #endregion
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,17 +17,26 @@ public class EnemyController : MonoBehaviour
     public NavMeshAgent NavMeshAgent { get; private set; }
 
 
-    public DetectionModule DetectionModule { get; private set; }
+    public DetectionModule DetectionModule;
+    Actor m_Actor;
+    Collider[] m_SelfColliders;
     public GameObject KnownDetectedTarget => DetectionModule.KnownDetectedTarget;
     public bool IsTargetInAttackRange => DetectionModule.IsTargetInAttackRange;
     public bool IsSeeingTarget => DetectionModule.IsSeeingTarget;
 
     int m_PathDestinationNodeIndex;
 
+    public Action onAttack;
+    public Action onDetectedTarget;
+    public Action onLostTarget;
+    public Action onDamaged;
+
     private void Start()
     {
         NavMeshAgent = GetComponent<NavMeshAgent>();
         var navigationModules = GetComponentsInChildren<DetectionModule>();
+        m_Actor = GetComponent<Actor>();
+        m_SelfColliders = GetComponentsInChildren<Collider>();
         if (navigationModules.Length > 0)
         {
             DetectionModule = navigationModules[0];
@@ -34,8 +44,26 @@ public class EnemyController : MonoBehaviour
             NavMeshAgent.angularSpeed = DetectionModule.AngularSpeed;
             NavMeshAgent.acceleration = DetectionModule.Acceleration;
         }
+        DetectionModule.onDetectedTarget += OnDetectedTarget;
+        DetectionModule.onLostTarget += OnLostTarget;
+        onAttack += DetectionModule.OnAttack;
     }
 
+    private void Update()
+    {
+        if (GameManager.Instance.GameState != GameState.Playing)
+            return;
+        DetectionModule.HandleTargetDetection(m_Actor, m_SelfColliders);
+    }
+
+    void OnLostTarget()
+    {
+        onLostTarget.Invoke();
+    }
+    void OnDetectedTarget()
+    {
+        onDetectedTarget.Invoke();
+    }
     public bool TryAtack(Vector3 enemyPosition)
     {
         // Shoot the weapon

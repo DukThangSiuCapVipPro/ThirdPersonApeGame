@@ -16,11 +16,11 @@ public class Actor : MonoBehaviour
     {
         m_ActorsManager = FindObjectOfType<ActorsManager>();
 
-        // Register as an actor
-        //if (!m_ActorsManager.Actors.Contains(this))
-        //{
-        //    m_ActorsManager.Actors.Add(this);
-        //}
+        //Register as an actor
+        if (!m_ActorsManager.Actors.Contains(this))
+        {
+            m_ActorsManager.Actors.Add(this);
+        }
     }
 
     void OnDestroy()

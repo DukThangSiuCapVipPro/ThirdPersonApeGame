@@ -62,11 +62,11 @@ namespace PopupSystem
 
         private void Update()
         {
-            if(!canvas.worldCamera)
-            {
-                canvas.worldCamera = Camera.main;
-                canvas.sortingLayerName = "Overlay";
-            }
+            // if(!canvas.worldCamera)
+            // {
+            //     canvas.worldCamera = Camera.main;
+            //     canvas.sortingLayerName = "Overlay";
+            // }
         }
 
         private void OnDestroy()

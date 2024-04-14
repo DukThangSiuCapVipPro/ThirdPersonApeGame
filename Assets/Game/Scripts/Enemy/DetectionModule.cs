@@ -71,8 +71,9 @@ public class DetectionModule : MonoBehaviour
                 if (sqrDistance < sqrDetectionRange && sqrDistance < closestSqrDistance)
                 {
                     // Check for obstructions
+                    Debug.DrawRay(DetectionSourcePoint.position, (otherActor.AimPoint.position - DetectionSourcePoint.position), Color.red);
                     RaycastHit[] hits = Physics.RaycastAll(DetectionSourcePoint.position,
-                        (otherActor.AimPoint.position - DetectionSourcePoint.position).normalized, DetectionRange,
+                        (otherActor.AimPoint.position - DetectionSourcePoint.position), DetectionRange,
                         -1, QueryTriggerInteraction.Ignore);
                     RaycastHit closestValidHit = new RaycastHit();
                     closestValidHit.distance = Mathf.Infinity;
@@ -88,7 +89,7 @@ public class DetectionModule : MonoBehaviour
 
                     if (foundValidHit)
                     {
-                        Actor hitActor = closestValidHit.collider.GetComponentInParent<Actor>();
+                        Actor hitActor = closestValidHit.collider.GetComponent<Actor>();
                         if (hitActor == otherActor)
                         {
                             IsSeeingTarget = true;

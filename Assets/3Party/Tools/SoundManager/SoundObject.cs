@@ -57,7 +57,7 @@ public class SoundObject : MonoBehaviour
    {
        parent = null;
        id = -1;
-       if (SoundManager.Exist)
+       if (SoundManager.Exists)
        {
            source.Stop();
            SoundManager.Instance.RecallSO(this);

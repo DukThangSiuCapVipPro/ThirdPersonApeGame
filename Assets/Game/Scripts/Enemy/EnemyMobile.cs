@@ -23,6 +23,10 @@ public class EnemyMobile : MonoBehaviour
     {
         m_EnemyController = GetComponent<EnemyController>();
         m_EnemyController.SetPathDestinationToClosestNode();
+        m_EnemyController.onAttack += OnAttack;
+        m_EnemyController.onDetectedTarget += OnDetectedTarget;
+        m_EnemyController.onLostTarget += OnLostTarget;
+        m_EnemyController.onDamaged += OnDamaged;
         AiState = AIState.Patrol;
     }
 
@@ -94,6 +98,7 @@ public class EnemyMobile : MonoBehaviour
 
     void OnAttack()
     {
+        Debug.Log($"{gameObject.name} attack");
         //Animator.SetTrigger(k_AnimAttackParameter);
     }
 
@@ -116,6 +121,11 @@ public class EnemyMobile : MonoBehaviour
     }
 
     public void OnDamaged(int dmg)
+    {
+        m_EnemyController.SpawnDropItems();
+        gameObject.SetActive(false);
+    }
+    void OnDamaged()
     {
         m_EnemyController.SpawnDropItems();
         gameObject.SetActive(false);

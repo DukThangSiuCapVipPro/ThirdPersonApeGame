@@ -8,41 +8,8 @@ using UnityEngine;
 using UnityEngine.Audio;
 using Random = UnityEngine.Random;
 
-public class SoundManager : MonoBehaviour
+public class SoundManager : Singleton<SoundManager>
 {
-
-    #region Instance
-    private static SoundManager instance;
-    public static SoundManager Instance
-    {
-        get
-        {
-            //if (instance == null)
-            //{
-            //    instance = FindObjectOfType<SoundManager>();
-            //    if (instance == null)
-            //    {
-            //        instance = Instantiate(Resources.Load<SoundManager>(GameConstant.SoundManager));
-            //    }
-            //}
-            return instance;
-        }
-    }
-
-    public static void LoadAsysn()
-    {
-        if (instance != null)
-            return;
-        Tools.LoadResourceAsyn<SoundManager>(delegate (ResourceRequest request)
-        {
-            instance = Instantiate(request.asset as SoundManager);
-            //instance.PlayHomeMusic();
-        });
-    }
-    public static bool Exist => instance != null;
-
-    #endregion
-
     #region Inspector
     public AudioSource music;
     public AudioMixer mixer;
@@ -54,15 +21,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] homeMusics;
     public AudioClip clickSound;
     public AudioClip claimReward;
-    public AudioClip[] endingSounds;
-    public AudioClip[] comboSounds;
-    public AudioClip stringWindSound;
-    public AudioClip pulldownSound;
-    public AudioClip[] niddleSounds;
-    public AudioClip mergeSound;
-    public AudioClip windChangeSound;
     public AudioClip purchaseSound;
-    public AudioClip balloonImpactSound;
     public SoundObject soSample;
     #endregion;
 
@@ -125,24 +84,13 @@ public class SoundManager : MonoBehaviour
     #endregion
 
     #region Unity Methods
-
-    private void Awake()
+    private void Start()
     {
-        if (FindObjectsOfType(typeof(SoundManager)).Length > 1)
-        {
-            Destroy(this.gameObject);
-            return;
-        }
-        instance = this;
-        DontDestroyOnLoad(this.gameObject);
         musicSetting = PlayerPrefs.GetInt("MusicSetting", 1) == 1;
         sFXSetting = PlayerPrefs.GetInt("SFXSetting", 1) == 1;
         musicVolume = PlayerPrefs.GetFloat("MusicVolume", 80);
         sFXVolume = PlayerPrefs.GetFloat("SFXVolume", 80);
-    }
 
-    private void Start()
-    {
         playingSound = new SortedList<int, AudioSource>();
         loopSound = new SortedList<int, LoopSoundRequest>();
         voiceSound = new SortedList<int, AudioSource>();
@@ -461,42 +409,9 @@ public class SoundManager : MonoBehaviour
     {
         PlaySfxRewind(claimReward);
     }
-
-    public void PlayEndingSound(int id)
-    {
-        PlaySfxRewind(endingSounds[id]);
-    }
-    public void PlayComboSound()
-    {
-        PlaySfxOverride(comboSounds[Random.Range(0, comboSounds.Length)]);
-    }
-    public void PlayMergeSound()
-    {
-        PlaySfxRewind(mergeSound);
-    }
-    public void PlayStrongWindSound()
-    {
-        PlaySfxRewind(stringWindSound);
-    }
-    public void PlayPulldownSound()
-    {
-        PlaySfxRewind(pulldownSound);
-    }
-    public void PlayNiddleSound()
-    {
-        PlaySfxRewind(niddleSounds[Random.Range(0, niddleSounds.Length)]);
-    }
     public void PlayPurchaseSound()
     {
         PlaySfxRewind(purchaseSound);
-    }
-    public void PlayWindChangeSound()
-    {
-        PlaySfxRewind(windChangeSound);
-    }
-    public void PlayBalloonImpactSound()
-    {
-        PlaySfxOverride(balloonImpactSound);
     }
     #endregion;
 

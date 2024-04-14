@@ -58,10 +58,65 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7620457149053165485, guid: 3db3d3f600062cd469b70572964a9800,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 32.42
+      objectReference: {fileID: 0}
+    - target: {fileID: -7217111613685541080, guid: 3db3d3f600062cd469b70572964a9800,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.63
+      objectReference: {fileID: 0}
+    - target: {fileID: -7217111613685541080, guid: 3db3d3f600062cd469b70572964a9800,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -4638677053342457173, guid: 3db3d3f600062cd469b70572964a9800,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 25.42
+      objectReference: {fileID: 0}
+    - target: {fileID: -1151549410894289857, guid: 3db3d3f600062cd469b70572964a9800,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 372495469388258074, guid: 3db3d3f600062cd469b70572964a9800,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.98
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3db3d3f600062cd469b70572964a9800,
         type: 3}
       propertyPath: m_Name
       value: cac bien hieu
+      objectReference: {fileID: 0}
+    - target: {fileID: 2359773113077158724, guid: 3db3d3f600062cd469b70572964a9800,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 2359773113077158724, guid: 3db3d3f600062cd469b70572964a9800,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 3158590057432733887, guid: 3db3d3f600062cd469b70572964a9800,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 42.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159537980272797200, guid: 3db3d3f600062cd469b70572964a9800,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 5117162373644650874, guid: 3db3d3f600062cd469b70572964a9800,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
