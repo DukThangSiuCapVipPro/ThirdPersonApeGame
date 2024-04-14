@@ -3,6 +3,8 @@ using StarterAssets;
 using System.Linq;
 using System;
 using Random = UnityEngine.Random;
+using TMPro;
+
 
 
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
@@ -85,6 +87,7 @@ public class ThirdPersonController : MonoBehaviour
 
     public Transform enemyDetecterTrans;
     public Transform cameraRootTrans;
+    public TMP_Text tvScore;
     #endregion
 
     #region Variables
@@ -171,6 +174,7 @@ public class ThirdPersonController : MonoBehaviour
         _fallTimeoutDelta = FallTimeout;
 
         ActorsManager.Instance.SetPlayer(this.gameObject);
+        ClaimItem(ItemType.Exp);
     }
 
     private void Update()
@@ -414,7 +418,8 @@ public class ThirdPersonController : MonoBehaviour
     #region Public Methods
     public void ClaimItem(ItemType itmType)
     {
-        exp += 10;
+        exp += 1;
+        tvScore.text = $"{exp}";
         CharacterConfig config = DataConfig.Instance.GetCharacterConfig(exp);
         cameraRootTrans.localPosition = new Vector3(config.camRootPos.x, config.camRootPos.y, config.camRootPos.z);
         cameraRootTrans.localEulerAngles = new Vector3(config.camRootRotate.x, config.camRootRotate.y, config.camRootRotate.z);
@@ -458,7 +463,7 @@ public class ThirdPersonController : MonoBehaviour
 
     private void OnPunchDone(AnimationEvent animationEvent)
     {
-        
+
         Collider[] cols = Physics.OverlapSphere(handTrans.position, 1f, enemyLayer);
         foreach (var col in cols)
         {

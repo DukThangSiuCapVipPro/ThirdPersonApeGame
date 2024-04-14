@@ -370,6 +370,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gau
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e81065f7f18973a4b9fb5951ac153b6b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e81065f7f18973a4b9fb5951ac153b6b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 925324120481830764, guid: e81065f7f18973a4b9fb5951ac153b6b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
