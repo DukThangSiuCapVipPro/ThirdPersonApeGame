@@ -2381,7 +2381,8 @@ MonoBehaviour:
   m_text: STAGE 99
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 3640910167346220122, guid: 8f586378b4e144a9851e7b34d9b748ee,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4422,7 +4423,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4905881357225436344, guid: 2d75c0aba26782c4080b593a5df558f5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2d75c0aba26782c4080b593a5df558f5, type: 3}
 --- !u!114 &736962221 stripped
 MonoBehaviour:
@@ -4901,7 +4906,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3514689537604951516, guid: 4b8ceb0920d8464478e9abe18defc261,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 4b8ceb0920d8464478e9abe18defc261, type: 3}
 --- !u!114 &804821472 stripped
 MonoBehaviour:
@@ -5125,7 +5134,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4905881357225436344, guid: 2d75c0aba26782c4080b593a5df558f5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2d75c0aba26782c4080b593a5df558f5, type: 3}
 --- !u!114 &818416559 stripped
 MonoBehaviour:
@@ -6622,7 +6635,8 @@ MonoBehaviour:
   m_text: 05:30
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 3640910167346220122, guid: 8f586378b4e144a9851e7b34d9b748ee,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10760,9 +10774,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 45f8f59d0d6ac22498178bd96f1b7d5f, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -13296,7 +13310,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4905881357225436344, guid: 2d75c0aba26782c4080b593a5df558f5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2d75c0aba26782c4080b593a5df558f5, type: 3}
 --- !u!114 &1966206205 stripped
 MonoBehaviour:
@@ -14526,11 +14544,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8579736535872106322}
     m_Modifications:
-    - target: {fileID: 1137335473390960170, guid: 1dc46d2b59e25a541ae35114abdabe78,
+    - target: {fileID: 5490679275217536761, guid: 1dc46d2b59e25a541ae35114abdabe78,
         type: 3}
-      propertyPath: boosterType
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 92ae7cebef0b79548a6a34fef63d882f,
+        type: 3}
     - target: {fileID: 5501434636193502712, guid: 1dc46d2b59e25a541ae35114abdabe78,
         type: 3}
       propertyPath: m_Pivot.x
@@ -14963,11 +14982,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8579736535872106322}
     m_Modifications:
-    - target: {fileID: 1137335473390960170, guid: 1dc46d2b59e25a541ae35114abdabe78,
+    - target: {fileID: 5490679275217536761, guid: 1dc46d2b59e25a541ae35114abdabe78,
         type: 3}
-      propertyPath: boosterType
-      value: 2
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b1537e752e5e1ca4f96b9c9e926ee729,
+        type: 3}
     - target: {fileID: 5501434636193502712, guid: 1dc46d2b59e25a541ae35114abdabe78,
         type: 3}
       propertyPath: m_Pivot.x
@@ -15104,9 +15124,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: bda1b4d063fd31b4ca606b8f7ee3643d, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1

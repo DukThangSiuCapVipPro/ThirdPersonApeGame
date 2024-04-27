@@ -142,7 +142,7 @@ public class EnemyMobile : MonoBehaviour
         Collider[] cols = Physics.OverlapSphere(handTrans.position, 1f, enemyLayer);
         foreach (var col in cols)
         {
-            col.SendMessage("OnDamaged", 100);
+            col.SendMessage("OnDamaged", m_EnemyController.score);
         }
         attacking = false;
     }

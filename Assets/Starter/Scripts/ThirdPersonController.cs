@@ -4,6 +4,8 @@ using System.Linq;
 using System;
 using Random = UnityEngine.Random;
 using TMPro;
+using UnityEngine.SocialPlatforms.Impl;
+
 
 
 
@@ -438,6 +440,11 @@ public class ThirdPersonController : MonoBehaviour
             SprintSpeed *= 1.25f;
         }
     }
+    public void OnDamaged(int dmg){
+        if (dmg > exp){
+            GameManager.Instance.EndGame();
+        }
+    }
     #endregion
 
     #region Private Methods
@@ -463,11 +470,10 @@ public class ThirdPersonController : MonoBehaviour
 
     private void OnPunchDone(AnimationEvent animationEvent)
     {
-
         Collider[] cols = Physics.OverlapSphere(handTrans.position, 1f, enemyLayer);
         foreach (var col in cols)
         {
-            col.SendMessage("OnDamaged", 10);
+            col.SendMessage("OnGetDamaged", exp);
         }
     }
     #endregion

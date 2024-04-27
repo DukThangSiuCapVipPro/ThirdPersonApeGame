@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -15,6 +16,8 @@ public class EnemyController : MonoBehaviour
 
     public PatrolPath PatrolPath { get; set; }
     public NavMeshAgent NavMeshAgent { get; private set; }
+    public int score;
+    public TMP_Text tvScore;
 
 
     public DetectionModule DetectionModule;
@@ -47,6 +50,7 @@ public class EnemyController : MonoBehaviour
         DetectionModule.onDetectedTarget += OnEnemyDetectedTarget;
         DetectionModule.onLostTarget += OnEnemyLostTarget;
         onAttack += DetectionModule.OnAttack;
+        tvScore.text = score.ToString();
     }
 
     private void Update()
@@ -149,7 +153,10 @@ public class EnemyController : MonoBehaviour
             }
         }
     }
-
+    public void OnGetDamaged(int dmg){
+        if (dmg > score)
+            onDamaged?.Invoke();
+    }
     public void SpawnDropItems()
     {
         Vector3 pos = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
