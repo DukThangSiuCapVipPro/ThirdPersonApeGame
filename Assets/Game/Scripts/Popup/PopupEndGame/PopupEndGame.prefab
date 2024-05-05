@@ -1329,14 +1329,14 @@ MonoBehaviour:
   tvBonus: {fileID: 4962296299505647918}
   rotateBonusRange:
   - 360
-  - 280
-  - 240
-  - 200
+  - 315
+  - 245
+  - 190
   bonusRange:
+  - 1.5
   - 2
   - 2.5
   - 3
-  - 4
   wheelTrans: {fileID: 6683853594807991472}
   tvLoseReward: {fileID: 8484605529479685320}
 --- !u!95 &1652863912381289169

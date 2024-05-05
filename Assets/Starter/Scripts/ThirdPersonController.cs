@@ -442,6 +442,7 @@ public class ThirdPersonController : MonoBehaviour
     }
     public void OnDamaged(int dmg){
         if (dmg > exp){
+            Debug.Log("GetDamaged");
             GameManager.Instance.EndGame();
         }
     }

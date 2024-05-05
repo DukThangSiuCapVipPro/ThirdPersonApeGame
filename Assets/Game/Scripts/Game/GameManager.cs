@@ -40,6 +40,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     }
     public void EndGame()
     {
+        if (GameState == GameState.End)
+            return;
         if (!usedBoosterTime)
         {
             GameState = GameState.Pause;

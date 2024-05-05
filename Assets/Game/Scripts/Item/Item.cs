@@ -25,6 +25,7 @@ public class Item : MonoBehaviour
 
     private void Update()
     {
+        
         if (!isMoving || characterTrans == null)
             return;
         transform.LookAt(characterTrans);
@@ -32,7 +33,21 @@ public class Item : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == 8 || collision.gameObject.layer == 10)
+        if (collision.gameObject.layer == 8)
+        {
+            rigid.isKinematic = true;
+            col.isTrigger = true;
+            if (characterTrans == null && !isMoving)
+            {
+                characterTrans = collision.gameObject.transform;
+                transform.DOJump(transform.position, 2, 1, 0.7f).OnComplete(delegate
+                {
+                    isMoving = true;
+                });
+                StartCoroutine(Tools.Delay(0.5f, delegate { isMoving = true; }));
+            }
+        }
+        else if (collision.gameObject.layer == 10)
         {
             rigid.isKinematic = true;
             col.isTrigger = true;
@@ -42,16 +57,7 @@ public class Item : MonoBehaviour
     {
         if (other.gameObject.layer == 8)
         {
-            if (characterTrans == null && !isMoving)
-            {
-                characterTrans = other.gameObject.transform;
-                transform.DOJump(transform.position, 2, 1, 0.7f).OnComplete(delegate
-                {
-                    isMoving = true;
-                });
-                StartCoroutine(Tools.Delay(0.5f, delegate { isMoving = true; }));
-            }
-            else if (isMoving)
+            if (isMoving)
             {
                 other.gameObject.SendMessage("ClaimItem", type);
                 SimplePool.Despawn(gameObject);
